@@ -1,7 +1,7 @@
 //Calculator Problem Statement 
 #include <stdio.h>
 #include <ctype.h>
-#define MAX 100
+#define MAX 1110
 
 long long st[MAX];
 int top = -1;
@@ -79,7 +79,7 @@ int main() {
 
             num = num * 10 + (ch - '0');
             prevdigit = 1;
-            expectnum = 0; // After a digit, we are no longer expecting a number
+            expectnum = 0;
         }
         else if(ch == '+'|| ch == '-' || ch =='*' || ch == '/'){
             if(expectnum){
@@ -94,14 +94,14 @@ int main() {
                     return 0;
                 }
             }
-            if(!calculate(&s, op, sign * num)) {// Check for division by zero
+            if(!calculate(&s, op, sign * num)) {
                 divzero = 1;
             }
             op = ch;
             num =  0;
             sign = 1;
             hasSign = 0;
-            expectnum = 1; // After an operator, we are expecting a number next
+            expectnum = 1; 
             prevdigit = 0;
 
         }
@@ -115,7 +115,7 @@ int main() {
         printf("Error: Invalid expression.\n");
         return 0;
     }
-    if(!calculate(&s, op, sign * num)) { // Check for division by zero
+    if(!calculate(&s, op, sign * num)) { 
         divzero = 1;
     }
     if(divzero) {
