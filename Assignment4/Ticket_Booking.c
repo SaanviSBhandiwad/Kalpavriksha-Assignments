@@ -12,25 +12,25 @@ int main(){
     float discount;
     float bill;
     char type[20];
-    scanf("%49[^\n]", name);
+    scanf("%49s", name);
     scanf("%d", &ticket);
     scanf("%d", &option);
-    if (ticket <= 0) {
+    if (ticket <= 0 || ticket > 20) {
         printf("Invalid ticket count\n");
         return 1;
     }
     switch (option) {
         case 1:
             price = std_price;
-            sprintf(type, "Standard");
+            strcpy(type, "Standard");
             break;
         case 2:
             price = pre_price;
-            sprintf(type, "Premium");
+            strcpy(type, "Premium");
             break;
         case 3:
             price = rec_price;
-            sprintf(type, "Recliner");
+            strcpy(type, "Recliner");
             break;
         default:
             printf("Invalid option\n");
